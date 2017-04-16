@@ -42,6 +42,7 @@ class Row extends React.Component {
   render() {
     const { thumbnail, subtitle, title, price, rowId } = this.props;
     const image = thumbnail && THUMB_URLS[thumbnail] ? <Image key="thumbnail" source={THUMB_URLS[thumbnail]} style={styles.rowImage} resizeMode="contain" /> : null
+    console.log("thumbnail", thumbnail, THUMB_URLS[thumbnail]);
     return (
       <View style={styles.rowContainer}>
         { image }
@@ -77,7 +78,7 @@ export default class ProductList extends React.Component {
   render() {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     // this.state = {
-    ds.cloneWithRows(Product.ProductInfo),
+    // ds.cloneWithRows(Product.ProductInfo),
     // };
     let filteredDataSource = [];
     Product.ProductInfo.forEach((product) => {
