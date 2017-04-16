@@ -1,4 +1,4 @@
-const tintColor = '#64C475';
+const tintColor = '#64bf9c';
 
 const lightTheme = {
   fontFamily: "Futura",
@@ -13,6 +13,8 @@ const lightTheme = {
   errorText: '#fff',
   warningBackground: '#EAEB5E',
   warningText: '#666804',
+  gradientColors: ['#8fde94', '#64bf9c'],
+  facebookColor: '#3b5998'
 };
 
 const theme = lightTheme

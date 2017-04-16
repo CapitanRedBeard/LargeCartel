@@ -42,7 +42,6 @@ class Row extends React.Component {
   render() {
     const { thumbnail, subtitle, title, price, rowId } = this.props;
     const image = thumbnail && THUMB_URLS[thumbnail] ? <Image key="thumbnail" source={THUMB_URLS[thumbnail]} style={styles.rowImage} resizeMode="contain" /> : null
-    console.log("thumbnail", thumbnail, THUMB_URLS[thumbnail]);
     return (
       <View style={styles.rowContainer}>
         { image }
@@ -80,7 +79,6 @@ export default class ProductList extends React.Component {
     // this.state = {
     ds.cloneWithRows(Product.ProductInfo),
     // };
-    console.log("Filter: ", this.props.filter);
     let filteredDataSource = [];
     Product.ProductInfo.forEach((product) => {
       if(product.category === this.props.filter) {

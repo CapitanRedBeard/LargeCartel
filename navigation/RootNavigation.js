@@ -16,7 +16,7 @@ import registerForPushNotificationsAsync
 import ShopScreen from '../screens/ShopScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-// import RootNavigation from './RootNavigation';
+import LoginScreen from '../screens/LoginScreen';
 
 
 
@@ -39,7 +39,18 @@ const ShopTab = StackNavigator({
   }
 });
 
-const Tabs = TabNavigator(
+const LoginStack = StackNavigator(
+  {
+    Login: {
+      screen: LoginScreen
+    }
+  },
+  {
+    headerMode: 'none'
+  }
+);
+
+const RootTabs = TabNavigator(
   {
     Shop: {
       screen: ShopTab,
@@ -79,6 +90,10 @@ const Tabs = TabNavigator(
 
 
 export default class RootNavigation extends React.Component {
+  state = {
+    loggedIn: false
+  }
+
   componentDidMount() {
     this._notificationSubscription = this._registerForPushNotifications();
   }
@@ -111,6 +126,10 @@ export default class RootNavigation extends React.Component {
   //   )
   // }
 
+  logIn = () => {
+    this.setState({loggedIn: true})
+  }
+
   render() {
     // const { hasLoggedIn } = this.props;
     // return (
@@ -118,7 +137,8 @@ export default class RootNavigation extends React.Component {
     //
     //   </StackNavigation>
     // );
-    return <Tabs />;
+    return this.state.loggedIn ? <RootTabs/> : <LoginStack screenProps={this.logIn} />;
+    // return <RootTabs />;
   }
 
   _registerForPushNotifications() {
